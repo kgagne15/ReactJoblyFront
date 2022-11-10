@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 
 const Login = ({login}) => {
+
+    const history = useHistory();
 
 
     const INITIAL_STATE = {
@@ -14,7 +17,7 @@ const Login = ({login}) => {
         e.preventDefault();
         let result = await login(formData);
         if (result.success) {
-            alert("You have logged in successfully")
+            history.push('/')
         } else {
             alert("Cannot login")
         }
