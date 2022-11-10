@@ -24,13 +24,24 @@ function App() {
   }
 
   //add login function here, pass through routes
+  async function login(loginData) {
+    try {
+      let token = await JoblyApi.login(loginData);
+      setToken(token);
+      return {success: true}
+    } catch(errors) {
+      console.error("login failed", errors);
+      return {success: false, errors}
+    }
+  }
+
   //add getCurrentUser here, use createContext
 
   return (
     <div className="App">
       <BrowserRouter>
         <Nav/>
-        <Routes signup={signup}/>
+        <Routes login={login} signup={signup}/>
       </BrowserRouter>
     </div>
   );
