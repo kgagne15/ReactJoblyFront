@@ -17,7 +17,7 @@ const Companies = () => {
         setCompanies(companiesRes);
     }
           
-    console.log('companies', companies)
+    // console.log('companies', companies)
     return (
     <>
     <h1>All Companies</h1>

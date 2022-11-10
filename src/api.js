@@ -45,9 +45,9 @@ class JoblyApi {
 
   // obviously, you'll add a lot here ...
 
-  static async getAllJobs() {
-    let jobResults = await this.request(`jobs`);
-    return jobResults; 
+  static async getJobs(title) {
+    let jobResults = await this.request(`jobs`, {title});
+    return jobResults.jobs; 
   }
 
   static async getSpecificJob(id) {
