@@ -8,7 +8,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 
-function Routes({companies}) {
+
+function Routes({signup}) {
     return (
         <Switch>
             <Route exact path="/"><Home /></Route>
@@ -16,7 +17,7 @@ function Routes({companies}) {
             <Route exact path="/companies/:handle"><CompanyDetail/></Route>
             <Route exact path="/jobs"><Jobs/></Route>
             <Route exact path="/login"><Login/></Route>
-            <Route exact path="/signup"><Signup/></Route>
+            <Route exact path="/signup"><Signup signup={signup}/></Route>
             <Route exact path="/profile/:id"><Profile/></Route>
         </Switch>
     );

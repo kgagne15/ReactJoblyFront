@@ -14,6 +14,8 @@ class JoblyApi {
   // the token for interactive with the API will be stored here.
   static token;
 
+
+
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
@@ -59,6 +61,12 @@ class JoblyApi {
   static async getCompanies(name) {
     let companyResults = await this.request(`companies`, {name});
     return companyResults.companies;
+  }
+
+  //used solution
+  static async signup(data) {
+    let res = await this.request(`auth/register`, data, "post")
+    return res.token;
   }
 
 }
