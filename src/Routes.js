@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Companies from "./Companies";
-import CompanyList from "./CompanyList";
+import CompanyDetail from "./CompanyDetail";
 import Jobs from "./Jobs";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -12,8 +12,8 @@ function Routes({companies}) {
     return (
         <Switch>
             <Route exact path="/"><Home /></Route>
-            <Route exact path="/companies"><Companies companies={companies} /></Route>
-            <Route exact path="/companies/:handle"><CompanyList/></Route>
+            <Route exact path="/companies"><Companies/></Route>
+            <Route exact path="/companies/:handle"><CompanyDetail/></Route>
             <Route exact path="/jobs"><Jobs/></Route>
             <Route exact path="/login"><Login/></Route>
             <Route exact path="/signup"><Signup/></Route>
