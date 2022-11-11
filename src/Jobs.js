@@ -3,7 +3,7 @@ import JoblyApi from "./api";
 import SearchForm from "./SearchForm";
 import JobDetail from "./JobDetail";
 
-const Jobs = () => {
+const Jobs = ({givenJobs}) => {
 
     let [jobs, setJobs] = useState([]);
 
@@ -19,24 +19,29 @@ const Jobs = () => {
 
     console.log('JOBS', jobs)
 
-    return (
-    <>
-        <h1>All Jobs</h1>
-        <SearchForm search={search}/>
-        {jobs.length ? (
-            <div>
-                {jobs.map(j => (
-                <div key={j.id}>
-                  <JobDetail job={j}/>
-                </div>
-                ))}
-            </div>
-        ) : (
-            <p>Sorry, there are no results from that search</p>
-        )}
-    </>
+   
+        return (
+            <>
+                <h1>All Jobs</h1>
+                <SearchForm search={search}/>
+                {jobs.length ? (
+                    <div>
+                        {jobs.map(j => (
+                        <div key={j.id}>
+                          <JobDetail job={j}/>
+                        </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>Sorry, there are no results from that search</p>
+                )}
+            </>
+            
+            )
     
-    )
+    
+
+    
 }
 
 export default Jobs;
