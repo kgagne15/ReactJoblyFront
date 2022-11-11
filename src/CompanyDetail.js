@@ -1,71 +1,48 @@
 import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 import JoblyApi from "./api";
-import Jobs from "./Jobs";
-
-
-// const CompanyDetail = () => {
-//     const { handle } = useParams();
-
-//     const [company, setCompany] = useState([]);
-
-//     useEffect(function getCompanyAndJobsForUser() {
-//               async function getCompany() {
-//                 setCompany(await JoblyApi.getCompany(handle));
-//               }
-          
-//               getCompany();
-//             }, [handle]);
-
-//     console.log(handle, 'handle')
-//     console.log('COMPANY', company)
-
-//     return (
-//         <div>
-//             <h2>{company.name}</h2>
-//             <p>{company.description}</p>
-//             {/* <Jobs givenJobs={company.jobs}/> */}
-//             <ul>{company.jobs.map(j => {
-//                 return <li>{j.title}</li>
-//             })}
-//             </ul>
-//         </div>
-//     )
-// }
-
-// export default CompanyDetail; 
-
+import JobDetail from "./JobDetail";
+import LoadingSpinner from "./LoadingSpinner";
 
 
 function CompanyDetail() {
     const { handle } = useParams();
     console.debug("CompanyDetail", "handle=", handle);
   
-    const [company, setCompany] = useState([]);
+    const [company, setCompany] = useState(null);
+    
+    // async function getCompanyInfo() {
+    //     let res = await JoblyApi.getCompany(handle)
+    //     setCompany(res)
+    // }
+
+    useEffect(function getSomething() {
+        getCompanyInfo()
+    }, [handle])
   
-    useEffect(function getCompanyAndJobsForUser() {
-      async function getCompany() {
-        setCompany(await JoblyApi.getCompany(handle));
-      }
-  
-      getCompany();
-    }, [handle]);
-  
-    // if (!company) return <LoadingSpinner />;
-  
+
+    async function getCompanyInfo() {
+        let res = await JoblyApi.getCompany(handle)
+        setCompany(res)
+    }
+
     console.log("COMPANY", company)
+    if (!company) return <LoadingSpinner />;
     return (
-        <div>
-          <h4>{company.name}</h4>
-          <p>{company.description}</p>
-          {/* <JobCardList jobs={company.jobs} /> */}
-          <ul>{company.jobs.map(j => {
-                return <li>{j.title}</li>
-            })}
+        <>
+            <h3>{company.name}</h3>
+            <p>{company.description}</p>
+            <p>Number of Employees: {company.numEmployees}</p>
+            <ul>
+                {company.jobs.map(j => {
+                    return <JobDetail job={j}/>
+                })}
             </ul>
-        </div>
-    );
+        </>
+    )
+
   }
   
   export default CompanyDetail;
+  
   
