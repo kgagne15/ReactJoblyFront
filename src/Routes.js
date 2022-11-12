@@ -31,12 +31,9 @@ function Routes({signup, login}) {
                 <Profile/>
             </PrivateRoute>
 
-            {/* <Route exact path="/companies"><Companies/></Route> */}
-            {/* <Route exact path="/companies/:handle"><CompanyDetail/></Route> */}
-            {/* <Route exact path="/jobs"><Jobs/></Route> */}
             <Route exact path="/login"><Login login={login}/></Route>
             <Route exact path="/signup"><Signup signup={signup}/></Route>
-            {/* <Route exact path="/profile/:id"><Profile/></Route> */}
+
         </Switch>
     );
 }

@@ -12,6 +12,7 @@ function Nav({logout}) {
             <li><Link to="/">Jobly</Link></li>
             <li><Link to="/companies">Companies</Link></li>
             <li><Link to="/jobs">Jobs</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
             <li>
                 <Link to="/" onClick={logout}>
                     Log out {currentUser.first_name || currentUser.username}

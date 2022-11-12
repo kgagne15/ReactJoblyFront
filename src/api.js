@@ -86,6 +86,12 @@ class JoblyApi {
     await this.request(`users/${username}/jobs/${id}`, {}, "post")
   }
 
+  //used solution
+  static async saveProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
+
 }
 
 // for now, put token ("testuser" / "password" on class)
