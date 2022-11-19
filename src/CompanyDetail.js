@@ -10,11 +10,6 @@ function CompanyDetail() {
     console.debug("CompanyDetail", "handle=", handle);
   
     const [company, setCompany] = useState(null);
-    
-    // async function getCompanyInfo() {
-    //     let res = await JoblyApi.getCompany(handle)
-    //     setCompany(res)
-    // }
 
     useEffect(function getSomething() {
         getCompanyInfo()
